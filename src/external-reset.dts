@@ -1,0 +1,32 @@
+/dts-v1/;
+/plugin/;
+/* Os cabramaker v1.0 — @oscabramaker. Physical pin 7 = PA6. */
+/ {
+    compatible = "xunlong,orangepi-one", "allwinner,sun8i-h3";
+    fragment@0 {
+        target = <&pio>;
+        __overlay__ {
+            external_reset_pin: external-reset-pin {
+                pins = "PA6";
+                function = "gpio_in";
+                bias-pull-up;
+            };
+        };
+    };
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            external-reset-keys {
+                compatible = "gpio-keys";
+                pinctrl-names = "default";
+                pinctrl-0 = <&external_reset_pin>;
+                button-reset {
+                    label = "external-reset";
+                    linux,code = <116>;
+                    gpios = <&pio 0 6 1>;
+                    debounce-interval = <50>;
+                };
+            };
+        };
+    };
+};

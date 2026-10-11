@@ -1,0 +1,31 @@
+Os cabramaker - versao 1.0
+Criador: Os cabramaker | Instagram: @oscabramaker
+
+VIDEOS
+Copie seus arquivos .mp4 para a pasta videos.
+Codec de video: H.264, 8 bits, 4:2:0; ate 1080p a 30 fps.
+Use nomes 01.mp4, 02.mp4 etc. para definir a ordem.
+O ultimo video retorna ao primeiro. Um unico video repete continuamente.
+
+BANNER
+Copie um PNG chamado splash.png para a raiz desta unidade MIDIA.
+Ele sera mostrado quando o Linux disponibilizar a tela, antes do video.
+Prefira 1280x720. Nao precisa de SSH para trocar.
+
+TROCA
+Desligue a placa, retire o cartao, copie os arquivos no computador, ejete o
+cartao, recoloque na placa e ligue. Nao retire o cartao com a placa ligada.
+Se o Windows pedir para formatar a particao Linux, cancele.
+
+SSH OPCIONAL
+Copie sua chave PUBLICA SSH para ssh.pub nesta raiz e reinicie.
+A chave privada fica somente no seu computador. Nao existe senha padrao.
+Acesso: ssh root@IP_DA_PLACA. Remova ssh.pub e reinicie para desativar.
+
+Requisitos: Orange Pi One H3, cartao de pelo menos 8 GB, HDMI 720p/60 Hz.
+Windows 10 1703 ou posterior / Windows 11.
+MIDIA usa FAT32: arquivo maximo de 4 GiB menos 1 byte.
+Espaco de midia: aproximadamente 4 GB. Cartoes maiores nao expandem nesta v1.0.
+
+O botao da placa reinicia. Botao externo opcional entre pino fisico 7 (PA6)
+e pino fisico 9 (GND), contato seco, normalmente aberto.

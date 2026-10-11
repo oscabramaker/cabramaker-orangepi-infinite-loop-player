@@ -1,0 +1,17 @@
+[Unit]
+Description=Os cabramaker 1.0 - Cedrus video loop
+RequiresMountsFor=/media/MIDIA
+Wants=cabramaker-splash.service
+After=cabramaker-splash.service sound.target
+
+[Service]
+User=kiosk
+SupplementaryGroups=video audio render
+RuntimeDirectory=cabramaker
+ExecStart=/usr/bin/python3 /usr/local/lib/cabramaker/player.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
