@@ -1,4 +1,4 @@
-# Os cabramaker 1.0 — Raspberry Pi 3 B / 3 B+
+# Os cabramaker 1.0.1 — Raspberry Pi 3 B / 3 B+
 
 Criador: **Os cabramaker** · Instagram: [@oscabramaker](https://www.instagram.com/oscabramaker/).
 
@@ -7,8 +7,8 @@ Inicialização e reprodução confirmadas em **Raspberry Pi 3 Model B v1.2**. O
 
 ## Baixar e gravar
 
-1. Baixe a imagem ZIP no [release Raspberry Pi v1.0](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/releases/tag/raspberrypi-v1.0).
-2. Extraia e escolha o arquivo **os-cabramaker-raspberrypi3-v1.0.img** no Raspberry Pi Imager, em imagem personalizada.
+1. Baixe a imagem ZIP no [release Raspberry Pi v1.0](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/releases/tag/raspberrypi-v1.0.1).
+2. Extraia e escolha o arquivo **os-cabramaker-raspberrypi3-v1.0.1.img** no Raspberry Pi Imager, em imagem personalizada.
 3. Grave em um microSD de **8 GB ou maior**, sem aplicar personalizações do Imager. A gravação apaga o cartão selecionado.
 4. Retire e recoloque o cartão no computador. Abra a unidade **MIDIA**.
 5. Copie seus vídeos para `videos`, apague a demonstração se desejar e substitua `splash.png` pelo seu banner.

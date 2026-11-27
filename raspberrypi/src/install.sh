@@ -3,7 +3,21 @@
 set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get install -y --no-install-recommends vlc-bin vlc-plugin-base vlc-plugin-video-output python3-pil openssh-server libpam-systemd avahi-daemon
+# Preserve the VLC build validated on the physical Pi; repositories may advance.
+vlc_packages=$(mktemp -d)
+export CABRAMAKER_VLC_PACKAGES="$vlc_packages"
+python3 - <<'PY'
+import hashlib,json,os,urllib.request
+from pathlib import Path
+out=Path(os.environ['CABRAMAKER_VLC_PACKAGES'])
+for package in json.loads(Path('/opt/cabramaker-src/vlc-packages.json').read_text()):
+    data=urllib.request.urlopen(package['url'],timeout=120).read()
+    assert hashlib.sha256(data).hexdigest()==package['sha256'],package['filename']
+    (out/package['filename']).write_bytes(data)
+PY
+apt-get install -y --no-install-recommends "$vlc_packages"/*.deb python3-pil openssh-server libpam-systemd avahi-daemon
+apt-mark hold libvlc-bin libvlc5 libvlccore9 vlc-bin vlc-data vlc-plugin-base vlc-plugin-video-output
+rm -rf "$vlc_packages"
 id kiosk >/dev/null 2>&1 || useradd -m -s /usr/sbin/nologin kiosk
 usermod -aG video,audio,render,tty kiosk
 install -d /usr/local/lib/cabramaker /media/MIDIA /etc/systemd/logind.conf.d

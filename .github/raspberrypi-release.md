@@ -1,4 +1,4 @@
-# Raspberry Pi 1.0 — Os cabramaker
+# Raspberry Pi @VERSION@ — Os cabramaker
 
 Versão para Raspberry Pi 3 Model B e 3 Model B+, assinada por **Os cabramaker / @oscabramaker**.
 
@@ -13,7 +13,7 @@ Versão para Raspberry Pi 3 Model B e 3 Model B+, assinada por **Os cabramaker /
 
 ## Gravar
 
-1. Baixe **os-cabramaker-raspberrypi3-v1.0.img.zip**.
+1. Baixe **os-cabramaker-raspberrypi3-v@VERSION@.img.zip**.
 2. Extraia o ZIP e selecione o `.img` no Raspberry Pi Imager, como imagem personalizada.
 3. Grave em um microSD de pelo menos 8 GB e pule as personalizações do Imager.
 4. Abra MIDIA, troque o MP4 na pasta videos e o banner splash.png; preserve os demais arquivos de firmware.
@@ -21,8 +21,10 @@ Versão para Raspberry Pi 3 Model B e 3 Model B+, assinada por **Os cabramaker /
 
 Se MIDIA estiver sem letra no Windows, atribua uma pelo Gerenciamento de Disco. Não formate a partição Linux.
 
-[Manual](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/blob/raspberrypi-v1.0/raspberrypi/README.md) · [Validação](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/blob/raspberrypi-v1.0/raspberrypi/docs/VALIDACAO.md)
+[Manual](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/blob/raspberrypi-v@VERSION@/raspberrypi/README.md) · [Validação](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/blob/raspberrypi-v@VERSION@/raspberrypi/docs/VALIDACAO.md)
 
 Anexos: imagem ZIP, SHA256SUMS.txt, código e packages.tsv. Confira o SHA256 antes de gravar. A imagem pública inclui somente demonstração própria; não contém vídeo comercial nem credenciais particulares.
 
 Código próprio sob MIT. Raspberry Pi OS, Debian, VLC e demais componentes preservam suas licenças. Instagram: [@oscabramaker](https://www.instagram.com/oscabramaker/).
+
+VLC fixado na revisão `1:3.0.24-0+deb13u1+rpt3`, a mesma usada na placa testada. Os sete pacotes são verificados por SHA256 e mantidos em hold para preservar o player. Demais dependências constam no manifesto da build.

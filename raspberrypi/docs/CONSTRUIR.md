@@ -1,4 +1,4 @@
-# Construir Raspberry Pi 1.0
+# Construir Raspberry Pi 1.0.1
 
 Use Linux como root, com 25 GB livres, xz-utils, util-linux, e2fsprogs, dosfstools, python3 e zip. Em x86_64, configure emulação binfmt ARM64; também pode construir em Linux ARM64 nativo.
 
@@ -28,3 +28,7 @@ O instalador usa os repositórios oficiais para obter VLC e dependências. O man
 Não use uma FAT que já continha mídia particular para distribuir a imagem: apagar um vídeo não apaga seus dados livres. Formate a FAT de distribuição novamente e copie somente firmware e mídia autorizada. Limpe identificadores, host keys e dados de teste; valide os sistemas de arquivos e compare o SHA256 após descompactar.
 
 Para gravar, selecione o `.img` gerado no Raspberry Pi Imager, sem personalizações. Veja a lista de testes em `VALIDACAO.md`.
+
+O VLC é fixado em `1:3.0.24-0+deb13u1+rpt3`, a revisão testada no 3 B. O arquivo `src/vlc-packages.json` registra URLs oficiais e SHA256 dos sete pacotes. A instalação verifica os hashes e mantém esses pacotes em hold; não substitui silenciosamente por revisões novas. Para atualizar o VLC, valide na placa antes de alterar os pins. As demais dependências são registradas no manifesto de cada build.
+
+A construção também pode ser iniciada manualmente em Actions → Build Raspberry Pi image. O workflow usa ARM64 nativo e não sobrescreve releases publicadas.

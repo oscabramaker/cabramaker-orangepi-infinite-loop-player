@@ -24,7 +24,7 @@ def api(method, path, data=None):
 
 
 release = next((r for r in api('GET', prefix + '/releases') if r['tag_name'] == tag), None)
-notes = Path('.github/raspberrypi-release.md').read_text()
+notes = Path('.github/raspberrypi-release.md').read_text().replace('@VERSION@', version)
 if release is None:
     release = api('POST', prefix + '/releases', {'tag_name': tag, 'target_commitish': os.environ['GITHUB_SHA'],
         'name': f'Os cabramaker {version} — Raspberry Pi 3 B / B+', 'body': notes,

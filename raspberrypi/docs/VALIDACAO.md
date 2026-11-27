@@ -1,4 +1,4 @@
-# Validação — Raspberry Pi 1.0
+# Validação — Raspberry Pi 1.0.1
 
 Versão fechada em 2026-11-27. Inicialização automática e reprodução confirmadas pelo proprietário em **Raspberry Pi 3 Model B v1.2**, após manter `console=tty1` e corrigir o splash para framebuffer de 16 ou 32 bits.
 
@@ -21,3 +21,5 @@ A imagem pública usa a mesma configuração final com uma demonstração própr
 | Botão GPIO e acesso SSH por rede na placa | Pendente |
 
 A execução emulada não comprova desempenho, decodificação de hardware, HDMI ou GPIO. Não foi feita certificação desses componentes. Novas builds devem repetir as verificações de integridade e os testes físicos.
+
+A edição 1.0.1 fixa a mesma revisão VLC `1:3.0.24-0+deb13u1+rpt3` da instalação testada. O primeiro rebuild automático 1.0 recebeu rpt4 do repositório e foi substituído por esta revisão com VLC congelado.

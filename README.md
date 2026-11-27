@@ -11,7 +11,7 @@ Ligue a placa e reproduza vídeos automaticamente, sem desktop e em repetição.
 | Placa | Versão atual | Download e instruções |
 | --- | --- | --- |
 | Orange Pi One — Allwinner H3 | 1.0-rc1 | [Baixar Orange Pi](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/releases/tag/v1.0-rc1) · [Manual](docs/USO.md) |
-| Raspberry Pi 3 Model B / B+ | 1.0 | [Baixar Raspberry Pi](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/releases/tag/raspberrypi-v1.0) · [Manual](raspberrypi/README.md) |
+| Raspberry Pi 3 Model B / B+ | 1.0.1 | [Baixar Raspberry Pi](https://github.com/oscabramaker/cabramaker-orangepi-infinite-loop-player/releases/tag/raspberrypi-v1.0.1) · [Manual](raspberrypi/README.md) |
 
 A versão Raspberry Pi teve inicialização e reprodução confirmadas no **3 B v1.2**; o teste físico no **3 B+** está pendente. A distribuição Orange Pi continua identificada como candidata 1.0-rc1; sua configuração de reprodução foi usada na placa, mas a imagem pública completa ainda requer validação física. Veja os relatórios: [Orange Pi](docs/VALIDACAO.md), [Raspberry Pi](raspberrypi/docs/VALIDACAO.md).
 
