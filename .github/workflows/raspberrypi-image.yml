@@ -1,0 +1,62 @@
+name: Build Raspberry Pi image
+run-name: Raspberry Pi ${{ inputs.version }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version (published versions are immutable)
+        required: true
+        default: '1.0'
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: raspberrypi-image-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 40
+    env:
+      VERSION: ${{ inputs.version }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Install host tools and download verified base
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends xz-utils util-linux e2fsprogs dosfstools python3 zip curl
+          mkdir -p out
+          curl --fail --location --retry 3 'https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2026-10-06/2026-10-06-raspios-trixie-arm64-lite.img.xz' -o out/base.img.xz
+          echo '483db18a48da399b5b7022ffae9a07bc6d99daab30e593aedac09b69ff422843  out/base.img.xz' | sha256sum -c -
+      - name: Build on native ARM64
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo bash raspberrypi/build-image.sh out/base.img.xz "$PWD/out/os-cabramaker-raspberrypi3-v${VERSION}.img"
+          sudo chown -R "$(id -u):$(id -g)" out
+      - name: Check filesystems and release package
+        shell: bash
+        run: |
+          set -euo pipefail
+          image="$PWD/out/os-cabramaker-raspberrypi3-v${VERSION}.img"
+          disk=$(sudo losetup --find --show --partscan "$image")
+          trap 'sudo losetup -d "$disk"' EXIT
+          sudo udevadm settle
+          sudo fsck.vfat -n "${disk}p1"
+          sudo e2fsck -fn "${disk}p2"
+          sudo losetup -d "$disk"
+          trap - EXIT
+          python3 .github/scripts/package-raspberrypi.py
+      - name: Publish verified release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/publish-raspberrypi.py
