@@ -1,0 +1,24 @@
+[Unit]
+Description=Os cabramaker - Raspberry Pi VLC HDMI loop
+RequiresMountsFor=/media/MIDIA
+Wants=cabramaker-splash.service
+After=cabramaker-splash.service sound.target systemd-user-sessions.service
+Conflicts=getty@tty1.service
+
+[Service]
+User=kiosk
+SupplementaryGroups=video audio render tty
+PAMName=login
+TTYPath=/dev/tty1
+StandardInput=tty
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+RuntimeDirectory=cabramaker
+ExecStart=/usr/bin/python3 /usr/local/lib/cabramaker/player.py
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Os cabramaker 1.0 - Banner from MIDIA
+RequiresMountsFor=/media/MIDIA
+After=systemd-udev-trigger.service
+Before=cabramaker-video.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/lib/cabramaker/splash.py
+RemainAfterExit=yes
+TimeoutStartSec=15

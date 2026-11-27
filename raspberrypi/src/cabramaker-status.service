@@ -1,0 +1,13 @@
+[Unit]
+Description=Os cabramaker - Offline boot report
+RequiresMountsFor=/boot/firmware
+Wants=cabramaker-video.service
+After=cabramaker-video.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/lib/cabramaker/salvar-status.sh
+TimeoutStartSec=100
+
+[Install]
+WantedBy=multi-user.target

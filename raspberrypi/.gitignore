@@ -1,0 +1,5 @@
+build/
+*.img
+*.img.xz
+*.zip
+__pycache__/

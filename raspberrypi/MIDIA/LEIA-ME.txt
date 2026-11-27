@@ -1,0 +1,14 @@
+Os cabramaker 1.0 — @oscabramaker
+RASPBERRY PI 3 MODEL B / B+
+
+videos/ : copie seus MP4/H.264 e apague a demonstracao se desejar.
+splash.png : substitua pelo seu banner PNG.
+ssh.pub : opcional; somente chave publica OpenSSH. A chave privada fica no PC.
+
+Esta primeira particao MIDIA tambem contem o firmware: preserve os demais arquivos.
+Se nao aparecer no Explorador do Windows, atribua uma letra a MIDIA FAT32 pelo Gerenciamento de Disco.
+Nao formate a particao Linux. Desligue antes de retirar o cartao; ejete com seguranca no PC.
+
+HDMI 720p/60. Cartao de pelo menos 8 GB. Arquivo individual menor que 4 GiB.
+STATUS-PI3.txt sera criado automaticamente para diagnostico, sem parar o video.
+Boot e reproducao confirmados no 3 B v1.2. Teste fisico no 3 B+ ainda pendente.

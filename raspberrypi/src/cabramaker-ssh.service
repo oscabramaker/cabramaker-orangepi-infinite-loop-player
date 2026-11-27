@@ -1,0 +1,11 @@
+[Unit]
+Description=Os cabramaker 1.0 - Optional SSH public key
+RequiresMountsFor=/media/MIDIA
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/lib/cabramaker/setup-ssh.sh
+
+[Install]
+WantedBy=multi-user.target
